@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.google.protobuf.gradle.*
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
@@ -21,6 +21,10 @@ plugins {
     id("com.google.protobuf") version "0.8.17"
 }
 
+application {
+    mainClass.set("MainKt")
+}
+
 group = "me.xibeisunny"
 version = "1.0"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
@@ -31,10 +35,17 @@ repositories {
 
 sourceSets {
     main {
-        java.setSrcDirs(listOf("src/main/kotlin", "src/main/java"))
+        java.setSrcDirs(
+            listOf(
+                "src/main/kotlin",
+                "src/main/java",
+                "build/generated/source/proto/main/java"
+            )
+        )
         proto {
             // In addition to the default 'src/main/proto'
             srcDir("src/main/proto")
+            include("**/*.proto")
         }
     }
 }
