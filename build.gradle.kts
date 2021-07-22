@@ -15,12 +15,15 @@ buildscript {
 }
 
 plugins {
+    application
+    java
     kotlin("jvm") version "1.5.21"
     id("com.google.protobuf") version "0.8.17"
 }
 
 group = "me.xibeisunny"
 version = "1.0"
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
@@ -28,6 +31,7 @@ repositories {
 
 sourceSets {
     main {
+        java.setSrcDirs(listOf("src/main/kotlin", "src/main/java"))
         proto {
             // In addition to the default 'src/main/proto'
             srcDir("src/main/proto")

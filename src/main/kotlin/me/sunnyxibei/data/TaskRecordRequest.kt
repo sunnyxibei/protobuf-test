@@ -1,4 +1,4 @@
-package data
+package me.sunnyxibei.data
 
 data class TaskRecordRequest(
     val localId: String,

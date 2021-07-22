@@ -1,0 +1,23 @@
+syntax = "proto3";
+package me.sunnyxibei.data;
+option java_package = "me.sunnyxibei.data";
+option java_outer_classname = "TaskProto";
+
+message  Eeg{
+  repeated double  alphaData = 1;
+  repeated double  betaData = 2;
+  repeated double  attentionData = 3;
+  repeated int64  timestampData = 4;
+  int64  startTimestamp = 5;
+  int64  endTimestamp = 6;
+}
+message TaskRecord{
+  string localId = 1;
+  int64  localCreated = 2;
+  int64  localUpdated = 3;
+  int32 score = 4;
+  int64  originDuration = 5;
+  string  subject = 6;
+  string  content = 7;
+  Eeg eeg = 8;
+}
